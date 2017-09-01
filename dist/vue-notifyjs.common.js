@@ -1,5 +1,5 @@
 /*!
- * vue-notifyjs v0.1.8
+ * vue-notifyjs v0.1.9
  * (c) 2017-present cristij <joracristi@gmail.com>
  * Released under the MIT License.
  */
@@ -67,7 +67,7 @@ var Notification = {
         customPosition: function customPosition() {
             var _this = this;
 
-            var initialMargin = 20;
+            var initialMargin = 60;
             var alertHeight = this.elmHeight + 10;
             var sameAlertsCount = this.$notifications.state.filter(function (alert) {
                 return alert.horizontalAlign === _this.horizontalAlign && alert.verticalAlign === _this.verticalAlign && alert.timestamp <= _this.timestamp;
@@ -230,6 +230,17 @@ var NotificationStore = {
         var indexToDelete = this.state.findIndex(function (n) {
             return n.timestamp === timestamp;
         });
+        if (indexToDelete !== -1) {
+            this.state.splice(indexToDelete, 1);
+        }
+    },
+    removeNotificationByObject: function removeNotificationByObject(obj) {
+        var indexToDelete = this.state.indexOf(obj);
+        if (indexToDelete !== -1) {
+            this.state.splice(indexToDelete, 1);
+        }
+    },
+    removeNotificationByIndex: function removeNotificationByIndex(indexToDelete) {
         if (indexToDelete !== -1) {
             this.state.splice(indexToDelete, 1);
         }
