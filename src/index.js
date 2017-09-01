@@ -3,7 +3,8 @@ import Notifications from './Notifications.js'
 const NotificationStore = {
     state: [], // here the notifications will be added
     settings: {
-        overlap: false
+        overlap: false,
+        initialMargin: 20
     },
     removeNotification (timestamp) {
         const indexToDelete = this.state.findIndex(n => n.timestamp === timestamp)

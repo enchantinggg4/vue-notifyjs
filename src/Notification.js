@@ -55,7 +55,7 @@ export default {
             return `alert-${this.type}`
         },
         customPosition () {
-            let initialMargin = 60;
+            let initialMargin = this.$notifications.settings["initialMargin"] || 20;
             let alertHeight = this.elmHeight + 10;
             let sameAlertsCount = this.$notifications.state.filter((alert) => {
                 return alert.horizontalAlign === this.horizontalAlign && alert.verticalAlign === this.verticalAlign && alert.timestamp <= this.timestamp

@@ -71,7 +71,7 @@ var Notification = {
         customPosition: function customPosition() {
             var _this = this;
 
-            var initialMargin = 60;
+            var initialMargin = this.$notifications.settings["initialMargin"] || 20;
             var alertHeight = this.elmHeight + 10;
             var sameAlertsCount = this.$notifications.state.filter(function (alert) {
                 return alert.horizontalAlign === _this.horizontalAlign && alert.verticalAlign === _this.verticalAlign && alert.timestamp <= _this.timestamp;
@@ -228,7 +228,8 @@ var Notifications = {
 var NotificationStore = {
     state: [], // here the notifications will be added
     settings: {
-        overlap: false
+        overlap: false,
+        initialMargin: 20
     },
     removeNotification: function removeNotification(timestamp) {
         var indexToDelete = this.state.findIndex(function (n) {
