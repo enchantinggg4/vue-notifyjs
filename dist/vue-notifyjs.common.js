@@ -238,16 +238,17 @@ var NotificationStore = {
         notification.timestamp = new Date();
         notification.timestamp.setMilliseconds(notification.timestamp.getMilliseconds() + this.state.length);
         this.state.push(notification);
+        return notification;
     },
     notify: function notify(notification) {
         var _this = this;
 
         if (Array.isArray(notification)) {
-            notification.forEach(function (notificationInstance) {
-                _this.addNotification(notificationInstance);
+            return notification.map(function (notificationInstance) {
+                return _this.addNotification(notificationInstance);
             });
         } else {
-            this.addNotification(notification);
+            return this.addNotification(notification);
         }
     }
 };

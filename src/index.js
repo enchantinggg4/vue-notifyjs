@@ -14,15 +14,16 @@ const NotificationStore = {
     addNotification(notification){
         notification.timestamp = new Date()
         notification.timestamp.setMilliseconds(notification.timestamp.getMilliseconds() + this.state.length)
-        this.state.push(notification)
+        this.state.push(notification);
+        return notification;
     },
     notify (notification) {
         if (Array.isArray(notification)) {
-            notification.forEach((notificationInstance) => {
-                this.addNotification(notificationInstance)
+            return notification.map((notificationInstance) => {
+                return this.addNotification(notificationInstance)
             })
         } else {
-            this.addNotification(notification)
+            return this.addNotification(notification)
         }
 
     }
