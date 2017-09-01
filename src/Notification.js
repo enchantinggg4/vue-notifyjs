@@ -87,6 +87,10 @@ export default {
 
     render(h){
         let componentName = this.component
+        if(this.component) {
+            return <this.component text={this.message}></this.component>
+        }
+
         return (
             <div onClick={this.close}
                  data-notify="container"
@@ -106,8 +110,6 @@ export default {
                 }
                 <span data-notify="message">
             {this.message !== undefined && this.message}
-                    {this.component !== undefined &&
-                    <this.component></this.component>}
         </span>
             </div>
         )
