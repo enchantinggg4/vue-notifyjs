@@ -88,6 +88,9 @@ var Notification = {
     methods: {
         close: function close() {
             this.$emit('close', this.timestamp);
+        },
+        remove: function remove() {
+            this.$notifications.removeNotification(this.timestamp);
         }
     },
     mounted: function mounted() {

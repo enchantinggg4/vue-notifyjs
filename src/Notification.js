@@ -76,6 +76,9 @@ export default {
     methods: {
         close () {
             this.$emit('close', this.timestamp)
+        },
+        remove(){
+            this.$notifications.removeNotification(this.timestamp);
         }
     },
     mounted () {
