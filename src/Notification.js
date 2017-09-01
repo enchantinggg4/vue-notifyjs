@@ -84,6 +84,7 @@ export default {
             setTimeout(this.close, this.timeout)
         }
     },
+
     render(h){
         let componentName = this.component
         return (
