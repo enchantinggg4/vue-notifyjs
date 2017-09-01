@@ -255,14 +255,13 @@ var NotificationStore = {
         }
     },
     addNotification: function addNotification(notification) {
-        notification.timestamp = new Date();
-        notification.timestamp.setMilliseconds(notification.timestamp.getMilliseconds() + this.state.length);
         var _this = this;
-        this.state.push(Object.assign({}, notification, {
-            remove: function remove() {
-                _this.removeNotification(this.timestamp);
-            }
-        }));
+        notification.timestamp = new Date();
+        notification.remove = function () {
+            _this.removeNotification(this.timestamp);
+        };
+        notification.timestamp.setMilliseconds(notification.timestamp.getMilliseconds() + this.state.length);
+        this.state.push(notification);
         return notification;
     },
     notify: function notify(notification) {

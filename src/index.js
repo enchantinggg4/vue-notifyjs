@@ -24,15 +24,13 @@ const NotificationStore = {
         }
     },
     addNotification(notification){
-        notification.timestamp = new Date();;
-        notification.timestamp.setMilliseconds(notification.timestamp.getMilliseconds() + this.state.length)
         const _this = this;
-        this.state.push({
-            ...notification,
-            remove(){
-                _this.removeNotification(this.timestamp)
-            }
-        });
+        notification.timestamp = new Date();
+        notification.remove = function(){
+            _this.removeNotification(this.timestamp)
+        };
+        notification.timestamp.setMilliseconds(notification.timestamp.getMilliseconds() + this.state.length)
+        this.state.push(notification);
         return notification;
     },
     notify (notification) {
