@@ -264,7 +264,7 @@ var NotificationsPlugin = {
 
             methods: {
                 notify: function notify(notification) {
-                    this.notificationStore.notify(notification);
+                    return this.notificationStore.notify(notification);
                 }
             }
         });
