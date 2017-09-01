@@ -87,7 +87,7 @@ export default {
 
     render(h){
         if(this.component)
-            return (<this.component text={this.message}></this.component>)
+            return (<this.component allAlerts={this.$notifications.state} text={this.message}></this.component>)
         else
             return (
                 <div onClick={this.close}

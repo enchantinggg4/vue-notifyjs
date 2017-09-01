@@ -100,7 +100,7 @@ var Notification = {
         if (this.component) return h(
             this.component,
             {
-                attrs: { text: this.message }
+                attrs: { allAlerts: this.$notifications.state, text: this.message }
             },
             []
         );else return h(
