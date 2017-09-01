@@ -86,32 +86,30 @@ export default {
     },
 
     render(h){
-        let componentName = this.component
-        if(this.component) {
-            return <this.component text={this.message}></this.component>
-        }
-
-        return (
-            <div onClick={this.close}
-                 data-notify="container"
-                 class={['alert open ', {'alert-with-icon': this.icon}, this.verticalAlign, this.horizontalAlign, this.alertType]}
-                 role="alert"
-                 style={this.customPosition}
-                 data-notify-position="top-center">
-                <button
-                    type="button"
-                    aria-hidden="true"
-                    class="close col-xs-1"
-                    data-notify="dismiss"
-                    onClick={this.close}>×
-                </button>
-                {
-                    this.icon && <span data-notify="icon" class={['alert-icon', this.icon]}></span>
-                }
-                <span data-notify="message">
-            {this.message !== undefined && this.message}
-        </span>
-            </div>
-        )
+        if(this.component)
+            return (<this.component text={this.message}></this.component>)
+        else
+            return (
+                <div onClick={this.close}
+                     data-notify="container"
+                     class={['alert open ', {'alert-with-icon': this.icon}, this.verticalAlign, this.horizontalAlign, this.alertType]}
+                     role="alert"
+                     style={this.customPosition}
+                     data-notify-position="top-center">
+                    <button
+                        type="button"
+                        aria-hidden="true"
+                        class="close col-xs-1"
+                        data-notify="dismiss"
+                        onClick={this.close}>×
+                    </button>
+                    {
+                        this.icon && <span data-notify="icon" class={['alert-icon', this.icon]}></span>
+                    }
+                    <span data-notify="message">
+                {this.message !== undefined && this.message}
+            </span>
+                </div>
+            )
     }
 }

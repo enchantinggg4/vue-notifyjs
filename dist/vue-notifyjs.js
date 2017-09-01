@@ -101,8 +101,13 @@ var Notification = {
         }
     },
     render: function render(h) {
-        var componentName = this.component;
-        return h(
+        if (this.component) return h(
+            this.component,
+            {
+                attrs: { text: this.message }
+            },
+            []
+        );else return h(
             'div',
             {
                 on: {
@@ -140,11 +145,7 @@ var Notification = {
                 {
                     attrs: { 'data-notify': 'message' }
                 },
-                [this.message !== undefined && this.message, this.component !== undefined && h(
-                    this.component,
-                    null,
-                    []
-                )]
+                [this.message !== undefined && this.message]
             )]
         );
     }
