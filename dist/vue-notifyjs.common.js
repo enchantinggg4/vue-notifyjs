@@ -253,15 +253,20 @@ var NotificationStore = {
     addNotification: function addNotification(notification) {
         notification.timestamp = new Date();
         notification.timestamp.setMilliseconds(notification.timestamp.getMilliseconds() + this.state.length);
-        this.state.push(notification);
+        var _this = this;
+        this.state.push(Object.assign({}, notification, {
+            remove: function remove() {
+                _this.removeNotification(this.timestamp);
+            }
+        }));
         return notification;
     },
     notify: function notify(notification) {
-        var _this = this;
+        var _this2 = this;
 
         if (Array.isArray(notification)) {
             return notification.map(function (notificationInstance) {
-                return _this.addNotification(notificationInstance);
+                return _this2.addNotification(notificationInstance);
             });
         } else {
             return this.addNotification(notification);
