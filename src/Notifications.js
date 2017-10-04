@@ -35,6 +35,7 @@ export default {
                     icon={notification.icon}
                     message={notification.message}
                     timeout={notification.timeout}
+                    title={notification.title}
                     type={notification.type}
                     component={notification.component}
                     timestamp={notification.timestamp}

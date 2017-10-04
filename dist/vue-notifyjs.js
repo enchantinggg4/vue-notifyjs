@@ -13,6 +13,7 @@ var Notification = {
     name: 'notification',
     props: {
         message: String,
+        title: String,
         icon: String,
         verticalAlign: {
             type: String,
@@ -107,7 +108,7 @@ var Notification = {
         if (this.component) return h(
             this.component,
             {
-                attrs: { timestamp: this.timestamp, text: this.message }
+                attrs: { timestamp: this.timestamp, text: this.message, title: this.title }
             },
             []
         );else return h(
@@ -198,6 +199,7 @@ var Notifications = {
                         icon: notification.icon,
                         message: notification.message,
                         timeout: notification.timeout,
+                        title: notification.title,
                         type: notification.type,
                         component: notification.component,
                         timestamp: notification.timestamp

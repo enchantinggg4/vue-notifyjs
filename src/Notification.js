@@ -2,6 +2,7 @@ export default {
     name: 'notification',
     props: {
         message: String,
+        title: String,
         icon: String,
         verticalAlign: {
             type: String,
@@ -90,7 +91,7 @@ export default {
 
     render(h){
         if(this.component)
-            return (<this.component timestamp={this.timestamp} text={this.message}></this.component>)
+            return (<this.component timestamp={this.timestamp} text={this.message} title={this.title}></this.component>)
         else
             return (
                 <div onClick={this.close}
