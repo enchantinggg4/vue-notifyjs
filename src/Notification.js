@@ -1,7 +1,7 @@
 export default {
     name: 'notification',
     props: {
-        message: [String, Object],
+        message: null,
         title: String,
         icon: String,
         verticalAlign: {

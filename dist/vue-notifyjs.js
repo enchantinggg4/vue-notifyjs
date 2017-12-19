@@ -12,7 +12,7 @@
 var Notification = {
     name: 'notification',
     props: {
-        message: String,
+        message: null,
         title: String,
         icon: String,
         verticalAlign: {
